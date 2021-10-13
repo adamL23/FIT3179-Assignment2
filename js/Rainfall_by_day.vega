@@ -1,0 +1,107 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 1100,
+    "height": 300,
+    "data": {
+        "url": "https://raw.githubusercontent.com/adamL23/FIT3179-Homework-Week10/main/data/AusRainFall_mean_attributes_by_Month.csv"
+    },
+    "title": "Daily Rainfall in Australia",
+    "config": {
+        "view": {
+            "strokeWidth": 0,
+            "step": 13
+        },
+        "axis": {
+            "domain": false
+        }
+    },
+    "params": [
+        {
+            "name": "state_selection",
+            "value": "Victoria",
+            "bind":{
+                "input": "select",
+                "options": [
+                    "Victoria",
+                    "New South Wales",
+                    "Tasmania",
+                    "Queensland",
+                    "Australian Capital Territory",
+                    "Northern Territory",
+                    "South Australia",
+                    "Western Australia"
+                ],
+                "labels": [
+                    "Victoria",
+                    "New South Wales",
+                    "Tasmania",
+                    "Queensland",
+                    "Australian Capital Territory",
+                    "Northern Territory",
+                    "South Australia",
+                    "Western Australia"
+                ],
+                "name": "State Selection: "
+            }
+        },
+        {
+            "name": "year_selection",
+            "value": 2019,
+            "bind":{
+                "input": "select",
+                "options":[
+                    "2019",
+                    "2020"
+                ],
+                "labels": [
+                    "2019",
+                    "2020"
+                ],
+                "name": "Year Selection: "
+            }
+        }
+    ],
+    "transform": [
+        {"filter": "state_selection == null || datum.state == state_selection"},
+        {"filter": "year_selection == null || datum.year == year_selection"}
+    ],
+    "mark":{
+        "type": "rect",
+        "stroke":"white"
+    },
+    "encoding": {
+        "x": {
+            "field": "day",
+            "sort":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31],
+            "type":"ordinal",
+            "title": "Day",
+            "axis": {
+                "labelAngle": 0
+            }
+        },
+        "y": {
+            "field": "month",
+            "type": "nominal",
+            "title": "Month"
+        },
+        "color": {
+            "field": "rainFall",
+            "type": "quantitative",
+            "scale":{
+                "type": "sequential",
+                "domain": [0,3,6,9,12,15,18,21,24,27,30,33,36,39,42,45,48,51,54,57,60],
+                "range":["#ffffff","#e6f9ff", "#ccf2ff","#b3ecff","#99e6ff","#80dfff","#66d9ff","#4dd2ff","#33ccff","#1ac6ff","#00bfff","#00ace6","#0099cc","#0086b3","#007399","#006080","#004d66","#00394d","#002633","#00131a","#00000"]
+            },
+            "legend": {
+                "title": "Rainfall(mm) Amount",
+                "labelAlign":"center"
+            }
+        },
+        "tooltip":[
+            {"field": "state", "type": "nominal"},
+            {"field": "year", "type": "nominal"},
+            {"field": "month", "type":"nominal"},
+            {"field": "rainFall", "type": "quantitative", "format": ",", "title": "Average Rainfall"}
+        ]
+    }
+  }

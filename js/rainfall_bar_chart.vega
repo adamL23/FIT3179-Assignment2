@@ -1,0 +1,155 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "Amount of Rainfall Per Day.",
+    "width":800,
+    "height":300,
+    "data": {
+        "url": "https://raw.githubusercontent.com/adamL23/FIT3179-Homework-Week10/main/data/AusRainFall_mean_attributes_by_Month.csv"
+    },
+    "params": [
+        {
+            "name": "state_selection",
+            "value": "Victoria",
+            "bind":{
+                "input": "select",
+                "options": [
+                    "Victoria",
+                    "New South Wales",
+                    "Tasmania",
+                    "Queensland",
+                    "Australian Capital Territory",
+                    "Northern Territory",
+                    "South Australia",
+                    "Western Australia"
+                ],
+                "labels": [
+                    "Victoria",
+                    "New South Wales",
+                    "Tasmania",
+                    "Queensland",
+                    "Australian Capital Territory",
+                    "Northern Territory",
+                    "South Australia",
+                    "Western Australia"
+                ],
+                "name": "State Selection: "
+            }
+        },
+        {
+            "name": "year_selection",
+            "value": 2019,
+            "bind":{
+                "input": "select",
+                "options":[
+                    "2019",
+                    "2020"
+                ],
+                "labels": [
+                    "2019",
+                    "2020"
+                ],
+                "name": "Year Selection: "
+            }
+        },
+        {
+            "name": "month_selection",
+            "value": "January",
+            "bind":{
+                "input": "select",
+                "options":[
+                    "January",
+                    "February",
+                    "March",
+                    "April",
+                    "May",
+                    "June",
+                    "July",
+                    "August",
+                    "September",
+                    "October",
+                    "November",
+                    "December"
+                ],
+                "labels": [
+                    "January",
+                    "February",
+                    "March",
+                    "April",
+                    "May",
+                    "June",
+                    "July",
+                    "August",
+                    "September",
+                    "October",
+                    "November",
+                    "December"
+                ],
+                "name": "Month Selection: "
+            }
+        }
+        
+    ],
+    "transform": [
+        {"filter": "state_selection == null || datum.state == state_selection"},
+        {"filter": "year_selection == null || datum.year == year_selection"},
+        {"filter": "month_selection == null || datum.month == month_selection"}
+    ],
+    "layer": [{
+    
+        "layer": [{
+            "mark": "bar",
+            "encoding": {
+            "x": {"field": "day", "type": "ordinal", "sort":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31], "axis": {"labelAngle": 0}},
+            "y": {"field": "rainFall", "type": "quantitative"},
+            "color":{"value":"#0c79c2"},
+            "tooltip":[
+                {"field": "state", "type": "nominal"},
+                {"field": "year", "type": "nominal"},
+                {"field": "month", "type":"nominal"},
+                {"field": "rainFall", "type": "quantitative", "format": ",", "title": "Average Rainfall"}
+            ]
+            }
+        }, {
+            "mark": "bar",
+            "transform": [
+                {"filter": "datum.rainFall >= 8"},
+                {"calculate": "8", "as": "baseline"}
+            ],
+            "encoding": {
+                "x": {"field": "day", "title":"Day", "type": "ordinal", "sort":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31]},
+                "y": {"field": "baseline", "type": "quantitative", "title": "Rain Fall"},
+                "y2": {"field": "rainFall"},
+                "color": {"value": "#13459c"},
+                "tooltip":[
+                    {"field": "state", "type": "nominal"},
+                    {"field": "year", "type": "nominal"},
+                    {"field": "month", "type":"nominal"},
+                    {"field": "rainFall", "type": "quantitative", "format": ",", "title": "Average Rainfall"}
+                ]
+            }
+        }
+    ]}, {
+        "data": {
+            "values": [{}]
+        },
+        "encoding": {
+            "y": {"datum": 8}
+        },
+        "layer": [{
+            "mark": "rule"
+        }, {
+            "mark": {
+            "type": "text",
+            "align": "right",
+            "baseline": "bottom",
+            "dx": -2,
+            "dy": -2,
+            "x": "width",
+            "text": "Heavy Rain",
+            "color":"orangered"
+            }
+        }]
+    }
+]
+
+}

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Homework Week 10</title>    
+    <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+
+  <!-- Import pure.css -->
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css" integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Google font -->
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700;900&display=swap" rel="stylesheet">
+
+
+  <!-- CSS file -->
+  <link rel="stylesheet" type="text/css" href="css/style.css" media="all">
+
+
+</head>
+<body>
+  
+<div class="page">
+
+    <!-- pure grid group -->
+    <div class="pure-g">
+        <div class="pure-u-1-1">
+          <h1>Rainiest State in Australia.</h1>
+          <p>This visualisation observes the temperature difference and rainfall between different states in Australia.</p>
+        </div>
+      </div>
+    <!-- end pure grid group -->
+
+    <!-- pure grid group -->
+    <div class="pure-g">
+        <div class="pure-u-1-3">
+          <div class="description description-left">
+            <h2>Temperature difference from 2019-2020</h2>
+            <p>Using all three columns without merging. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa sapien faucibus et molestie ac feugiat sed. Egestas purus viverra accumsan in nisl.</p>
+          </div>
+        </div>
+        <div class="pure-u-1-3">
+            <div id="vis1"  class="vis-container"></div>
+          </div>
+          <div class="pure-u-1-3">
+            <div id="vis2"  class="description description-right"></div>
+          </div>
+
+    
+    <!-- end pure grid group -->
+    <div class="pure-g">
+        <div class="pure-u-2-3">
+          <div id="vis4"  class="vis-container"></div>
+        </div>
+      
+    </div>
+
+    <!-- pure grid group -->
+    <div class="pure-g">
+        <div class="pure-u-2-3">
+          <div id="vis3"  class="vis-container"></div>
+        </div>
+        <div class="pure-u-1-3">
+          <div class="description description-right">
+            <h2>Rainfall Recorded In Each State.</h2>
+            <p>The following visualisation shows the recorded rainfall amount (per mm) for each state in Australia from 2019-2020.</p>
+          </div>
+        </div>
+      
+    </div>
+
+
+<script type="text/javascript">
+
+  var specVis1 = "js/aus_states_maxtemp.vega";
+  var specVis2 = "js/aus_min_max_line_chart.vega";
+  var specVis3 = "js/rainfall_bar_chart.vega";
+  var specVis4 = "js/Rainfall_by_day.vega";
+
+  vegaEmbed('#vis1', specVis1, {"actions":false}).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+  vegaEmbed('#vis2', specVis2, {"actions":false}).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+  vegaEmbed('#vis3', specVis3, {"actions":false}).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+  vegaEmbed('#vis4', specVis4, {"actions":false}).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+</script>
+</body>
+</html>
