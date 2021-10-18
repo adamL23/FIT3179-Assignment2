@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Assignment 2</title>    
+    <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+
+  <!-- Import pure.css -->
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css" integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Google font -->
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700;900&display=swap" rel="stylesheet">
+
+
+  <!-- CSS file -->
+  <link rel="stylesheet" type="text/css" href="css/style.css" media="all">
+
+
+</head>
+
+
+<body>
+
+  <div class="page2">
+    <div class="pure-g">
+      <div class="pure-u-1-1">
+        <h1 style="color:rgb(15, 49, 83); text-align: center;">Weather In Australia</h1>
+        <p style="text-align: center;"><span style="color:black;">This visualisation observes the temperature difference and rainfall between different states in Australia. Australia's climate varies between the eight states and territories.
+          There are four seasons across the country and a wet and dry season in the tropical north.</span>
+        </p>
+      </div>
+    </div>
+  </div>
+  
+<div class="page">
+
+    <!-- pure grid group -->
+    
+    <div class="pure-g">
+        <div class="pure-u-1-3">
+          <div class="description description-left">
+            <h2 style="color: rgb(27, 99, 172);">Average Temperature From 2019-2020 </h2>
+            <p>Australia is a land of extremes with temperatures ranging from highs of 40°C in the central desert regions to below freezing in the higher regions of the country's southeast. 
+              Sometimes these extremes can be experienced on a single day.
+            </p>
+              <p>The visual map on the right shows the average temperature throughout the eight states in Australia. 
+                States in the south are notably colder to those in the north and west.
+              </p>
+              <p><b>Norther Territory</b> has shown to be the hottest with the <b><span style="color: rgb(250, 164, 6);">maximum temperature</span></b> reaching up to <b>32°C</b>,
+                while <b>Tasmania</b> is the coldest where it reaches it <b><span style="color: #0c79c2;">minimum temperature</span></b> of <b>8°C</b>.
+              </p>
+              <p>The line chart below observes the tempearutre change throughout the year for each state.</p>
+              <p><b>Use the selection below the line chart to change state and year.</b></p>
+          </div>
+        </div>
+        <!--
+        <div class="pure-u-1-3">
+            <div id="vis2"  class="vis-container"></div>
+        </div>
+        -->
+        <div class="pure-u-1-3">
+          <div id="vis1"  class="vis-container" style="padding-left: 25x; left: 150px;"></div>
+        </div>
+      </div>
+    
+      <div class="pure-g">
+        <div class="pure-u-1-1">
+          <h3 style="color: rgb(63, 100, 138); text-align: center;">Average Maximum And Minimum Temperature By Month</h2>
+        </div>
+      </div>
+    
+
+    <div class="pure-g">
+
+      <div class="pure-u-1-3">
+        <div id="vis2"  class="vis-container" style="left: 100px;"></div>
+      </div>
+      
+    </div>
+    
+    <!-- pure grid group -->
+    <div class="pure-g" style="padding-top: 50px;">
+  
+        <div class="pure-u-1-3">
+          <div class="description description-left">
+            <h2 style="color: rgb(27, 99, 172);">Rainfall Recorded In Each State.</h2>
+            <p>The following visualisation shows the recorded rainfall amount (per mm) for each state in Australia from 2019-2020.</p>
+            <p>Rainfall in Australia is highly variable with low average rainfall per year throughout the country and intense seasonal rains in the tropics.</p>
+            <p>Amount of rainfall varies between each state and the time of season. <b>Queensland</b> have shown to record the highest volume of rainfall among the eight states,
+              notably in the month of January, due to <b>monsoon season</b> that begins from October to May.
+            </p>
+            <p><b>Use the selection below each charts to change state, year and month.</b></p>
+          </div>
+        </div>
+
+        <div class="pure-u-1-3">
+          <div id="vis3"  class="vis-container"></div>
+        </div>
+      
+    </div>
+    
+    <!-- end pure grid group -->
+
+    <div class="pure-g">
+      <div class="pure-u-1-1">
+        <h3 style="color: rgb(63, 100, 138); text-align: center; padding-top: 10px;">Daily Rainfall n Australia</h2>
+      </div>
+    </div>
+    
+    <div class="pure-g">
+        <div class="pure-u-2-3">
+          <div id="vis4"  class="vis-container"></div>
+        </div>
+      
+    </div>
+
+    <div class="pure-g">
+      <div class="pure-u-1-1 small-font">
+        <p>This visualisation is created by <a href="https://github.com/adamL23" target="_blank">Meor Adam Luqman</a>. The datasource <a href="https://github.com/adamL23/FIT3179-Assignment2/tree/main/data" target="_blank">can be found here.</href>.</p>
+      </div>
+    </div>
+    
+
+
+<script type="text/javascript">
+
+  var specVis1 = "js/aus_states_maxtemp.vega";
+  var specVis2 = "js/aus_min_max_line_chart.vega";
+  var specVis3 = "js/rainfall_bar_chart.vega";
+  var specVis4 = "js/Rainfall_by_day.vega";
+
+  vegaEmbed('#vis1', specVis1, {"actions":false}).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+  vegaEmbed('#vis2', specVis2, {"actions":false}).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+  vegaEmbed('#vis3', specVis3, {"actions":false}).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+  vegaEmbed('#vis4', specVis4, {"actions":false}).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+</script>
+</body>
+</html>
