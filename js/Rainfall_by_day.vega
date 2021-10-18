@@ -2,10 +2,10 @@
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "width": 1100,
     "height": 300,
+    "background":"rgb(221, 229, 235)",
     "data": {
         "url": "https://raw.githubusercontent.com/adamL23/FIT3179-Homework-Week10/main/data/AusRainFall_mean_attributes_by_Month.csv"
     },
-    "title": "Daily Rainfall in Australia",
     "config": {
         "view": {
             "strokeWidth": 0,
@@ -81,6 +81,8 @@
         },
         "y": {
             "field": "month",
+            "sort": ["January", "February", "March", "April", "May", "June", "July",
+                "August", "September", "October", "November", "December"],
             "type": "nominal",
             "title": "Month"
         },

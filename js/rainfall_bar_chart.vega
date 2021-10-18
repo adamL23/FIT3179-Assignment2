@@ -1,8 +1,9 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": "Amount of Rainfall Per Day.",
+    "title": "Amount Of Rainfall Per Day",
     "width":800,
     "height":300,
+    "background":"rgb(221, 229, 235)",
     "data": {
         "url": "https://raw.githubusercontent.com/adamL23/FIT3179-Homework-Week10/main/data/AusRainFall_mean_attributes_by_Month.csv"
     },
@@ -146,7 +147,8 @@
             "dy": -2,
             "x": "width",
             "text": "Heavy Rain",
-            "color":"orangered"
+            "color":"orangered",
+            "fontWeight":"bold"
             }
         }]
     }

@@ -1,7 +1,8 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "width": 300,
-    "height": 200,
+    "width": 1000,
+    "height": 300,
+    "background":"rgb(221, 229, 235)",
     "data": {
       "url": "https://raw.githubusercontent.com/adamL23/FIT3179-Homework-Week10/main/data/Australia_RainFall_maxTemp_minTemp.csv"
     },
@@ -72,20 +73,23 @@
             "y": {
                 "field": {"repeat": "layer"},
                 "type": "quantitative",
-                "title": "Average Maximum Temperature",
+                "title": "Temperature",
                 "axis": {"tickCount":6}
             },
             "color": {
                 "datum": {"repeat": "layer"},
                 "type": "nominal",
-                "legend": {"labelExpr": "{'maxTemp': 'Max Temperature', 'minTemp': 'Min Temperature'}[datum.label]"}
+                "legend": {"labelExpr": "{'maxTemp': 'Max Temperature', 'minTemp': 'Min Temperature'}[datum.label]"},
+                "scale":{
+                    "range":["orange", "#0c79c2"]
+                }
             },
             "tooltip":[
                 {"field": "state", "type": "nominal"},
                 {"field": "month", "type":"nominal"},
                 {"field": "year", "type":"nominal"},
-                {"field": "maxTemp", "type": "quantitative", "format": ",", "title": "Average Max Temperature"},
-                {"field": "minTemp", "type": "quantitative", "format": ",", "title": "Average Min Temperature"}
+                {"field": "maxTemp", "type": "quantitative", "format": ".2f", "title": "Average Max Temperature"},
+                {"field": "minTemp", "type": "quantitative", "format": ".2f", "title": "Average Min Temperature"}
             ]
         }
     }
